@@ -1,3 +1,4 @@
+[![Made with Claude](https://shields.io)](https://anthropic.com)
 # 🌸 Peek
 
 A calm, minimal Chrome extension that hides your UCAM results behind a
