@@ -1,4 +1,4 @@
-[![Made with Claude](https://shields.io)](https://anthropic.com)
+
 # 🌸 Peek
 
 A calm, minimal Chrome extension that hides your UCAM results behind a
@@ -106,3 +106,6 @@ mode preference (`chrome.storage.sync`) — never grades, never courses.
 The Share tab is the one place Peek generates an image — that image is
 only ever offered to you as a local download; nothing is uploaded or sent
 anywhere automatically.
+
+
+[![Made with Claude](https://shields.io)](https://anthropic.com)
