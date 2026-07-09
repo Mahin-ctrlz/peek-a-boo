@@ -1,0 +1,301 @@
+/* ==========================================================================
+   Peek — Popup
+   340px wide. Every surface reads from tokens.css custom properties.
+   ========================================================================== */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  width: 340px;
+  background: var(--peek-bg);
+  color: var(--peek-text);
+  font-family: var(--peek-font-body);
+  -webkit-font-smoothing: antialiased;
+  transition: background var(--peek-dur-base) var(--peek-ease-soft),
+              color var(--peek-dur-base) var(--peek-ease-soft);
+}
+
+.peek-card {
+  padding: 28px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: peek-card-in var(--peek-dur-base) var(--peek-ease) both;
+}
+
+@keyframes peek-card-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Scene: mascot + breathing ring ----
+   The signature element. A slow, ambient ring rather than a static icon —
+   it reads as "waiting calmly," not "loading." */
+
+.peek-scene {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 6px;
+}
+
+.peek-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--peek-accent);
+  opacity: 0.6;
+  animation: peek-breathe 3.6s var(--peek-ease-soft) infinite;
+}
+
+@keyframes peek-breathe {
+  0%, 100% { transform: scale(0.86); opacity: 0.45; }
+  50%      { transform: scale(1);    opacity: 0.7; }
+}
+
+.peek-cloud {
+  position: relative;
+  font-size: 34px;
+  line-height: 1;
+  animation: peek-drift 5s ease-in-out infinite;
+  filter: drop-shadow(0 4px 10px var(--peek-shadow));
+}
+
+@keyframes peek-drift {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-4px) rotate(2deg); }
+}
+
+.peek-sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.peek-sparkle {
+  position: absolute;
+  font-size: 12px;
+  animation: peek-sparkle-pop 900ms var(--peek-ease) forwards;
+}
+
+@keyframes peek-sparkle-pop {
+  0%   { opacity: 0; transform: scale(0.3) translateY(0); }
+  30%  { opacity: 1; transform: scale(1) translateY(-6px); }
+  100% { opacity: 0; transform: scale(0.7) translateY(-18px); }
+}
+
+/* ---- Title & message ---- */
+
+.peek-title {
+  margin: 4px 0 2px;
+  font-family: var(--peek-font-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--peek-primary-ink);
+}
+
+.peek-message {
+  margin: 0 0 20px;
+  font-size: 13.5px;
+  color: var(--peek-text-soft);
+  min-height: 17px;
+  transition: opacity var(--peek-dur-fast) ease;
+}
+
+.peek-message.peek-message-swap {
+  animation: peek-msg-swap 260ms ease;
+}
+
+@keyframes peek-msg-swap {
+  0%   { opacity: 0; transform: translateY(3px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Buttons ---- */
+
+.peek-btn {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  font-family: var(--peek-font-body);
+  font-weight: 600;
+  border-radius: var(--peek-radius-md);
+  transition: transform var(--peek-dur-fast) var(--peek-ease),
+              box-shadow var(--peek-dur-fast) var(--peek-ease),
+              background var(--peek-dur-fast) ease;
+}
+
+.peek-btn:active { transform: scale(0.98); }
+
+.peek-btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 18px;
+  font-size: 14.5px;
+  background: var(--peek-primary);
+  color: var(--peek-surface);
+  box-shadow: 0 6px 16px -4px var(--peek-shadow);
+}
+
+.peek-btn-primary:hover {
+  transform: translateY(-1px) scale(1.015);
+  box-shadow: 0 10px 20px -4px var(--peek-shadow);
+}
+
+.peek-btn-icon { font-size: 15px; }
+
+.peek-link-btn {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--peek-font-body);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--peek-text-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--peek-border);
+  transition: color var(--peek-dur-fast) ease;
+}
+
+.peek-link-btn:hover { color: var(--peek-primary-ink); }
+
+/* ---- Divider ---- */
+
+.peek-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--peek-border);
+  margin: 20px 0 16px;
+}
+
+/* ---- Settings rows ---- */
+
+.peek-settings {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.peek-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.peek-row-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--peek-text);
+  text-align: left;
+}
+
+.peek-select {
+  font-family: var(--peek-font-body);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--peek-primary-ink);
+  background: var(--peek-accent);
+  border: none;
+  border-radius: var(--peek-radius-sm);
+  padding: 7px 10px;
+  cursor: pointer;
+  appearance: none;
+  min-width: 118px;
+  text-align: right;
+  direction: rtl;
+}
+
+/* ---- Slider ---- */
+
+.peek-slider {
+  -webkit-appearance: none;
+  width: 118px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--peek-accent);
+  cursor: pointer;
+}
+
+.peek-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--peek-primary);
+  border: 2px solid var(--peek-surface);
+  box-shadow: 0 1px 4px var(--peek-shadow);
+  cursor: pointer;
+}
+
+/* ---- Toggle ---- */
+
+.peek-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.peek-toggle input { display: none; }
+
+.peek-toggle-track {
+  display: block;
+  width: 38px;
+  height: 22px;
+  border-radius: 11px;
+  background: var(--peek-border);
+  position: relative;
+  transition: background var(--peek-dur-fast) ease;
+}
+
+.peek-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--peek-surface);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: transform 200ms var(--peek-ease);
+}
+
+.peek-toggle input:checked + .peek-toggle-track {
+  background: var(--peek-primary);
+}
+
+.peek-toggle input:checked + .peek-toggle-track .peek-toggle-thumb {
+  transform: translateX(16px);
+}
+
+/* ---- Footnote ---- */
+
+.peek-footnote {
+  margin: 18px 0 0;
+  font-size: 10.5px;
+  color: var(--peek-text-soft);
+  opacity: 0.75;
+}
+
+/* ---- Accessibility ---- */
+
+:focus-visible {
+  outline: 2px solid var(--peek-primary);
+  outline-offset: 2px;
+  border-radius: var(--peek-radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .peek-ring, .peek-cloud, .peek-card { animation: none !important; }
+}

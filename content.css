@@ -1,0 +1,56 @@
+/* ==========================================================================
+   Peek — Content script styles
+   Injected into the UCAM page itself. Namespaced under .peek- to avoid
+   colliding with the host site's CSS.
+   ========================================================================== */
+
+/* ---- Hidden target states ---- */
+
+.peek-hidden-blur {
+  filter: blur(var(--peek-blur, 12px));
+  user-select: none;
+  transition: filter var(--peek-dur-reveal, 620ms) var(--peek-ease, ease);
+}
+
+.peek-hidden-swap {
+  position: relative;
+  color: transparent !important;
+  user-select: none;
+}
+
+.peek-hidden-swap::after {
+  content: attr(data-peek-swap-text);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--peek-primary-ink, #7A2E4C);
+  font-family: var(--peek-font-body, inherit);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  animation: peek-unfurl var(--peek-dur-reveal, 620ms) var(--peek-ease, ease) both;
+}
+
+@keyframes peek-unfurl {
+  from { opacity: 0; letter-spacing: 0.15em; }
+  to   { opacity: 1; letter-spacing: normal; }
+}
+
+.peek-revealed {
+  filter: none !important;
+}
+
+.peek-revealed.peek-hidden-swap::after {
+  content: none;
+}
+
+.peek-revealed.peek-hidden-swap {
+  color: inherit !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .peek-hidden-blur, .peek-hidden-swap::after { transition: none !important; animation: none !important; }
+}

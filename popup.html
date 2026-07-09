@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Peek</title>
+<link rel="stylesheet" href="assets/themes/tokens.css" />
+<link rel="stylesheet" href="popup.css" />
+</head>
+<body data-peek-theme="sakura">
+
+  <main class="peek-card" role="main">
+
+    <!-- Signature moment: the mascot cloud drifts + the state ring pulses gently.
+         This replaces a static icon with something that feels alive but calm. -->
+    <div class="peek-scene" aria-hidden="true">
+      <div class="peek-ring"></div>
+      <div class="peek-cloud" id="peek-mascot">☁️</div>
+      <div class="peek-sparkles" id="peek-sparkles"></div>
+    </div>
+
+    <h1 class="peek-title">Peek</h1>
+    <p class="peek-message" id="peek-message">Ready when you are.</p>
+
+    <button class="peek-btn peek-btn-primary" id="peek-reveal-btn" type="button">
+      <span class="peek-btn-icon">🌸</span>
+      <span id="peek-reveal-label">Reveal results</span>
+    </button>
+
+    <button class="peek-link-btn" id="peek-hide-btn" type="button" hidden>
+      Hide again
+    </button>
+
+    <button class="peek-link-btn" id="peek-tools-btn" type="button">
+      📊 Open CGPA tools
+    </button>
+
+    <div class="peek-divider"></div>
+
+    <section class="peek-settings">
+
+      <div class="peek-row">
+        <label class="peek-row-label" for="peek-theme-select">Theme</label>
+        <select class="peek-select" id="peek-theme-select">
+          <option value="sakura">🌸 Sakura</option>
+          <option value="matcha">🍵 Matcha</option>
+          <option value="ocean">🌊 Ocean</option>
+          <option value="lavender">💜 Lavender</option>
+          <option value="dark">🌙 Dark</option>
+        </select>
+      </div>
+
+      <div class="peek-row">
+        <label class="peek-row-label" for="peek-blur-slider">Blur strength</label>
+        <input class="peek-slider" type="range" id="peek-blur-slider" min="0" max="20" value="12" step="1" />
+      </div>
+
+      <div class="peek-row">
+        <label class="peek-row-label" for="peek-mode-select">Hidden style</label>
+        <select class="peek-select" id="peek-mode-select">
+          <option value="blur">Blur</option>
+          <option value="dots">Dots ••••</option>
+          <option value="emoji">Emoji 🌸</option>
+          <option value="mystery">Mystery ???</option>
+          <option value="encouragement">A kind word</option>
+        </select>
+      </div>
+
+      <label class="peek-toggle-row" for="peek-auto-toggle">
+        <span class="peek-row-label">Hide automatically</span>
+        <span class="peek-toggle">
+          <input type="checkbox" id="peek-auto-toggle" checked />
+          <span class="peek-toggle-track"><span class="peek-toggle-thumb"></span></span>
+        </span>
+      </label>
+
+    </section>
+
+    <p class="peek-footnote">Runs entirely on your device. Nothing leaves your browser.</p>
+    <p class="peek-footnote peek-credit">
+      Made by <a href="https://github.com/Mahin-ctrlz" target="_blank" rel="noopener noreferrer">Mahin-ctrlz</a> 🦀
+    </p>
+
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>

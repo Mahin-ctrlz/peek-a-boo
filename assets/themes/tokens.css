@@ -1,0 +1,91 @@
+/* ==========================================================================
+   Peek — Design Tokens
+   One file, five themes, everything else reads from these variables.
+   ========================================================================== */
+
+:root {
+  /* ---- Sakura (default) ---- */
+  --peek-bg: #FFF8FB;
+  --peek-surface: #FFFFFF;
+  --peek-primary: #FF8FB8;
+  --peek-primary-ink: #7A2E4C;
+  --peek-accent: #FFD8E7;
+  --peek-text: #3D3D3D;
+  --peek-text-soft: #8A7B82;
+  --peek-border: rgba(61, 61, 61, 0.08);
+  --peek-shadow: rgba(255, 143, 184, 0.25);
+
+  /* ---- Shape & motion (theme-independent) ---- */
+  --peek-radius-sm: 10px;
+  --peek-radius-md: 16px;
+  --peek-radius-lg: 22px;
+  --peek-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --peek-ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --peek-dur-fast: 150ms;
+  --peek-dur-base: 260ms;
+  --peek-dur-reveal: 620ms;
+
+  /* ---- Type ---- */
+  --peek-font-display: 'Fredoka', 'Quicksand', ui-rounded, 'Segoe UI', sans-serif;
+  --peek-font-body: 'Quicksand', 'Segoe UI', system-ui, sans-serif;
+  --peek-font-mono: 'DM Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* ---- Blur strength, user-adjustable, set by popup.js ---- */
+  --peek-blur: 12px;
+}
+
+[data-peek-theme="matcha"] {
+  --peek-bg: #F4FAF5;
+  --peek-surface: #FFFFFF;
+  --peek-primary: #5A9C68;
+  --peek-primary-ink: #274A2E;
+  --peek-accent: #CDE7D2;
+  --peek-text: #2D4031;
+  --peek-text-soft: #74897A;
+  --peek-border: rgba(45, 64, 49, 0.08);
+  --peek-shadow: rgba(90, 156, 104, 0.25);
+}
+
+[data-peek-theme="ocean"] {
+  --peek-bg: #F5FAFF;
+  --peek-surface: #FFFFFF;
+  --peek-primary: #66A8FF;
+  --peek-primary-ink: #1D3E66;
+  --peek-accent: #DCEEFF;
+  --peek-text: #2C3A4A;
+  --peek-text-soft: #7C8CA0;
+  --peek-border: rgba(44, 58, 74, 0.08);
+  --peek-shadow: rgba(102, 168, 255, 0.25);
+}
+
+[data-peek-theme="lavender"] {
+  --peek-bg: #FAF7FF;
+  --peek-surface: #FFFFFF;
+  --peek-primary: #9D8DF1;
+  --peek-primary-ink: #3E2E7A;
+  --peek-accent: #E8E1FF;
+  --peek-text: #362F4A;
+  --peek-text-soft: #8A81A3;
+  --peek-border: rgba(54, 47, 74, 0.08);
+  --peek-shadow: rgba(157, 141, 241, 0.25);
+}
+
+[data-peek-theme="dark"] {
+  --peek-bg: #1F1F23;
+  --peek-surface: #2B2B31;
+  --peek-primary: #A78BFA;
+  --peek-primary-ink: #EDE7FF;
+  --peek-accent: #3A3540;
+  --peek-text: #F5F5F5;
+  --peek-text-soft: #9C98A8;
+  --peek-border: rgba(245, 245, 245, 0.08);
+  --peek-shadow: rgba(167, 139, 250, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --peek-dur-fast: 1ms;
+    --peek-dur-base: 1ms;
+    --peek-dur-reveal: 1ms;
+  }
+}
